@@ -14,7 +14,12 @@
   - Widget Thời tiết (Weather Widget)
   - Widget Phát nhạc (Music Widget)
   - Widget Đồng hồ (Clock Widget)
-- **Kiểm thử (Testing)**: Bao gồm Unit Tests (`ExampleUnitTest`, `TaskRepositoryTest`) và Instrumented UI Tests (`TaskActivityEspressoTest`).
+- **Kiểm thử (Testing Pyramid)**:
+  - Unit Test (chạy trên máy tính): `TaskRepositoryTest`, `TaskRepositoryImplTest`
+  - Integration Test (Room in-memory, chạy trên emulator): `TaskDaoIntegrationTest`
+  - UI Test (Espresso, chạy trên emulator): `TaskActivityEspressoTest`, `TaskUiFlowEspressoTest`
+  - Chạy: `./gradlew testDebugUnitTest` và `./gradlew connectedDebugAndroidTest`
+- **Widget To-Do tương tác**: chạm vào một công việc trên widget để đánh dấu Xong / Chưa xong.
 
 ## 🛠️ Công Nghệ Sử Dụng
 

@@ -45,6 +45,9 @@ class CalendarRemoteViewsFactory(private val context: Context) : RemoteViewsServ
         views.setTextViewText(R.id.tv_event_title, event.title)
         views.setTextViewText(R.id.tv_event_date_time, "${event.date} • ${event.time}")
 
+        // Chạm vào sự kiện -> mở app (dùng template do CalendarWidgetProvider gắn lên ListView)
+        views.setOnClickFillInIntent(R.id.widget_event_item_container, Intent())
+
         return views
     }
 

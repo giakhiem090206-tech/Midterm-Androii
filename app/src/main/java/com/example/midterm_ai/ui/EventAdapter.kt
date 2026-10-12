@@ -3,7 +3,7 @@ package com.example.midterm_ai.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.midterm_ai.R
@@ -33,7 +33,7 @@ class EventAdapter(
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.findViewById(R.id.tv_event_title)
         private val tvDateTime: TextView = itemView.findViewById(R.id.tv_event_datetime)
-        private val btnDelete: Button = itemView.findViewById(R.id.btn_delete_event)
+        private val btnDelete: ImageButton = itemView.findViewById(R.id.btn_delete_event)
 
         fun bind(event: EventEntity) {
             tvTitle.text = event.title

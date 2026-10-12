@@ -55,6 +55,10 @@ class TaskRemoteViewsFactory(private val context: Context) : RemoteViewsService.
             views.setTextColor(R.id.tv_widget_task_status, Color.parseColor("#E53E3E"))
         }
 
+        // Chạm vào dòng này -> TaskWidgetProvider nhận id công việc để đánh dấu Xong/Chưa xong
+        val fillInIntent = Intent().putExtra(TaskWidgetProvider.EXTRA_TASK_ID, task.id)
+        views.setOnClickFillInIntent(R.id.widget_item_container, fillInIntent)
+
         return views
     }
 

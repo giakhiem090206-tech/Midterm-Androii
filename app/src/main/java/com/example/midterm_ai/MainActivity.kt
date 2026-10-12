@@ -80,8 +80,15 @@ class MainActivity : AppCompatActivity() {
         setupMusicSection()
         setupCalendarSection()
 
-        // Default tab
-        showTab(R.id.nav_todo)
+        // Tab mặc định: chọn trên thanh điều hướng để icon "To-Do" cũng sáng lên
+        // (trước đây thanh dưới sáng "Clock" trong khi nội dung là To-Do)
+        bottomNav.selectedItemId = R.id.nav_todo
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Công việc có thể vừa được đánh dấu xong từ widget -> tải lại danh sách
+        if (layoutTodo.visibility == View.VISIBLE) loadTasks()
     }
 
     private fun initViews() {
@@ -195,11 +202,8 @@ class MainActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         tvWeatherTemp.text = temp
                         tvWeatherCondition.text = condition
-                        WeatherWidgetProvider.updateWeatherWidget(
-                            this@MainActivity,
-                            android.appwidget.AppWidgetManager.getInstance(this@MainActivity),
-                            0
-                        )
+                        // Trước đây truyền id = 0 (không tồn tại) nên widget không được cập nhật
+                        WeatherWidgetProvider.updateAllWeatherWidgets(this@MainActivity)
                     }
                 } else {
                     withContext(Dispatchers.Main) {

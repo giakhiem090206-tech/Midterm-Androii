@@ -4,7 +4,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -36,7 +36,7 @@ class TaskAdapter(
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.findViewById(R.id.tv_task_title)
         private val chkDone: CheckBox = itemView.findViewById(R.id.chk_done)
-        private val btnDelete: Button = itemView.findViewById(R.id.btn_delete_task)
+        private val btnDelete: ImageButton = itemView.findViewById(R.id.btn_delete_task)
 
         fun bind(task: Task) {
             tvTitle.text = task.title

@@ -6,6 +6,8 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.widget.RemoteViews
 import com.example.midterm_ai.MainActivity
 import com.example.midterm_ai.R
@@ -39,16 +41,27 @@ class CalendarWidgetProvider : AppWidgetProvider() {
         ) {
             val views = RemoteViews(context.packageName, R.layout.widget_calendar)
 
-            val intent = Intent(context, CalendarRemoteViewsService::class.java)
+            val intent = Intent(context, CalendarRemoteViewsService::class.java).apply {
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
+            }
             views.setRemoteAdapter(R.id.widget_list_events, intent)
             views.setEmptyView(R.id.widget_list_events, R.id.widget_calendar_empty)
 
-            val openAppIntent = Intent(context, MainActivity::class.java)
+            // Không được gắn setOnClickPendingIntent lên ListView (widget sẽ lỗi, không hiện).
+            // Thay vào đó: chạm tiêu đề -> mở app, chạm từng sự kiện -> mở app qua template.
             val openAppPendingIntent = PendingIntent.getActivity(
-                context, 0, openAppIntent,
+                context, 0, Intent(context, MainActivity::class.java),
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
-            views.setOnClickPendingIntent(R.id.widget_list_events, openAppPendingIntent)
+            views.setOnClickPendingIntent(R.id.tv_widget_calendar_header, openAppPendingIntent)
+
+            val openAppTemplate = PendingIntent.getActivity(
+                context, 1, Intent(context, MainActivity::class.java),
+                PendingIntent.FLAG_UPDATE_CURRENT or
+                    (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) PendingIntent.FLAG_MUTABLE else 0)
+            )
+            views.setPendingIntentTemplate(R.id.widget_list_events, openAppTemplate)
 
             val refreshIntent = Intent(context, CalendarWidgetProvider::class.java).apply {
                 action = ACTION_REFRESH_CALENDAR

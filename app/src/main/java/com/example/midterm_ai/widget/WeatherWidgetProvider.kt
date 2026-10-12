@@ -31,17 +31,21 @@ class WeatherWidgetProvider : AppWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
         if (intent.action == ACTION_REFRESH_WEATHER) {
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            val componentName = ComponentName(context, WeatherWidgetProvider::class.java)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(componentName)
-            for (appWidgetId in appWidgetIds) {
-                updateWeatherWidget(context, appWidgetManager, appWidgetId)
-            }
+            updateAllWeatherWidgets(context)
         }
     }
 
     companion object {
         const val ACTION_REFRESH_WEATHER = "com.example.midterm_ai.ACTION_REFRESH_WEATHER"
+
+        /** Cập nhật mọi Weather widget đang được ghim trên màn hình chính. */
+        fun updateAllWeatherWidgets(context: Context) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val componentName = ComponentName(context, WeatherWidgetProvider::class.java)
+            for (appWidgetId in appWidgetManager.getAppWidgetIds(componentName)) {
+                updateWeatherWidget(context, appWidgetManager, appWidgetId)
+            }
+        }
 
         fun updateWeatherWidget(
             context: Context,
