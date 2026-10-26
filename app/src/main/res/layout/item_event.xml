@@ -1,56 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="4dp"
-    android:layout_marginVertical="6dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#F1F5F9"
-    app:strokeWidth="1dp">
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp"
+    android:gravity="top">
 
+    <!-- Left side: Time -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="end">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_event_time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_event_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#0F172A"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_event_datetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#6366F1"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/btn_delete_event"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Xóa sự kiện"
-            android:src="@android:drawable/ic_menu_delete"
-            app:tint="#EF4444" />
-
+            android:textColor="#444746"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+    <!-- Right side: Event Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#D3E3FD"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:gravity="center_vertical">
+
+            <!-- Google Calendar Style Colored Bar -->
+            <View
+                android:layout_width="6dp"
+                android:layout_height="match_parent"
+                android:background="#0A56D1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingVertical="12dp"
+                android:paddingStart="12dp">
+
+                <TextView
+                    android:id="@+id/tv_event_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#041E49"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0A56D1"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_delete_event"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Delete"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="#0A56D1" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

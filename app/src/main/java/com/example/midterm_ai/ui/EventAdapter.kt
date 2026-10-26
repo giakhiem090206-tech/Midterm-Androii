@@ -32,12 +32,14 @@ class EventAdapter(
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.findViewById(R.id.tv_event_title)
-        private val tvDateTime: TextView = itemView.findViewById(R.id.tv_event_datetime)
+        private val tvDate: TextView = itemView.findViewById(R.id.tv_event_date)
+        private val tvTime: TextView = itemView.findViewById(R.id.tv_event_time)
         private val btnDelete: ImageButton = itemView.findViewById(R.id.btn_delete_event)
 
         fun bind(event: EventEntity) {
             tvTitle.text = event.title
-            tvDateTime.text = "${event.date} - ${event.time}"
+            tvDate.text = event.date
+            tvTime.text = event.time
             btnDelete.setOnClickListener {
                 onDeleteEvent(event)
             }

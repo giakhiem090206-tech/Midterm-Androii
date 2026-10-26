@@ -191,79 +191,80 @@
         </LinearLayout>
 
         <!-- 3. To-Do List Tab Layout -->
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/layout_tab_todo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:visibility="visible">
 
-            <com.google.android.material.card.MaterialCardView
+            <TextView
+                android:id="@+id/tv_todo_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Reminders"
+                android:textColor="#007AFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="3dp"
-                app:strokeColor="#F1F5F9"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Thêm công việc mới"
-                        android:textColor="#0F172A"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/edit_task_title"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_clock_card"
-                            android:backgroundTint="#F8FAFC"
-                            android:hint="Nhập tiêu đề công việc..."
-                            android:inputType="text"
-                            android:paddingHorizontal="16dp"
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_add_task"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:text="Thêm"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginStart="10dp"
-                            app:backgroundTint="#4F46E5"
-                            app:cornerRadius="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_tasks"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_todo_header"
+                android:layout_above="@id/todo_add_bar"
                 android:clipToPadding="false"
-                android:paddingBottom="8dp" />
+                android:background="#FFFFFF"
+                android:layout_marginHorizontal="0dp"
+                android:elevation="2dp" />
 
-        </LinearLayout>
+            <!-- iOS Style Bottom Add Bar -->
+            <LinearLayout
+                android:id="@+id/todo_add_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp"
+                android:background="#F8FAFC"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_input_add"
+                    app:tint="#007AFF" />
+
+                <EditText
+                    android:id="@+id/edit_task_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="New Reminder..."
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/btn_add_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:textColor="#007AFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:background="?android:attr/selectableItemBackground" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
         <!-- 4. Music Player Tab Layout -->
         <LinearLayout
@@ -350,22 +351,43 @@
         </LinearLayout>
 
         <!-- 5. Calendar Tab Layout -->
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/layout_tab_calendar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:visibility="gone">
 
-            <com.google.android.material.card.MaterialCardView
+            <TextView
+                android:id="@+id/tv_calendar_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="3dp"
-                app:strokeColor="#F1F5F9"
-                app:strokeWidth="1dp">
+                android:text="Schedule"
+                android:textColor="#041E49"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_events"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_calendar_header"
+                android:layout_above="@id/calendar_add_card"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/calendar_add_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:cardBackgroundColor="#F8FAFC"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -373,78 +395,69 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Thêm sự kiện mới"
-                        android:textColor="#0F172A"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp" />
-
-                    <EditText
-                        android:id="@+id/edit_event_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_clock_card"
-                        android:backgroundTint="#F8FAFC"
-                        android:hint="Tên sự kiện..."
-                        android:inputType="text"
-                        android:paddingHorizontal="16dp"
-                        android:textSize="14sp" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edit_event_title"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_clock_card"
+                            android:backgroundTint="#FFFFFF"
+                            android:hint="New Event Title"
+                            android:inputType="text"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="15sp"
+                            android:textColor="#041E49" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_add_event"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:text="Add"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="8dp"
+                            app:backgroundTint="#0A56D1"
+                            app:cornerRadius="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
                         <EditText
                             android:id="@+id/edit_event_date"
                             android:layout_width="0dp"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_clock_card"
-                            android:backgroundTint="#F8FAFC"
-                            android:hint="Ngày (15/10/2026)"
-                            android:paddingHorizontal="12dp"
-                            android:textSize="13sp" />
+                            android:backgroundTint="#FFFFFF"
+                            android:hint="Date (e.g., Oct 26)"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="14sp" />
 
                         <EditText
                             android:id="@+id/edit_event_time"
                             android:layout_width="0dp"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_clock_card"
-                            android:backgroundTint="#F8FAFC"
-                            android:hint="Giờ (09:00 AM)"
+                            android:backgroundTint="#FFFFFF"
+                            android:hint="Time (09:00 AM)"
                             android:layout_marginStart="8dp"
-                            android:paddingHorizontal="12dp"
-                            android:textSize="13sp" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_add_event"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:text="Thêm"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginStart="8dp"
-                            app:backgroundTint="#4F46E5"
-                            app:cornerRadius="12dp" />
+                            android:paddingHorizontal="16dp"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_events"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </FrameLayout>
 
