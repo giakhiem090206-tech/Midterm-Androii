@@ -4,8 +4,8 @@
 
 ## 🚀 Các Tính Năng Chính
 
-- **Quản lý công việc (Task Management)**: Thêm, xem, cập nhật và xóa công việc sử dụng Room Database và Repository Pattern.
-- **Lịch & Sự kiện**: Quản lý lịch trình và nhắc nhở cá nhân.
+- **Quản lý công việc (Task Management)**: Thêm, xem, cập nhật và xóa công việc sử dụng Room Database. Giao diện được thiết kế theo phong cách Apple Reminders (Dark Theme) với hiệu ứng Animation vuốt tự xóa cực kỳ chuyên nghiệp.
+- **Lịch & Sự kiện**: Quản lý lịch trình và nhắc nhở cá nhân. Tích hợp giao diện hiển thị phong cách Google Calendar. Form nhập liệu thông minh tích hợp DatePickerDialog và TimePickerDialog chuẩn của hệ thống.
 - **Thời tiết**: Tích hợp dữ liệu thời tiết thời gian thực qua Retrofit và Coroutines.
 - **Trình phát nhạc (Music Player)**: Quản lý và điều khiển phát nhạc ngay trong ứng dụng.
 - **Tiện ích màn hình chính (App Widgets)**: Các widget tương tác trực tiếp ngoài màn hình chính bao gồm:
