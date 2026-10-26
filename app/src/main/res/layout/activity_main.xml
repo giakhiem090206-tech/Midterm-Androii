@@ -181,7 +181,7 @@
                 android:id="@+id/main_btn_weather_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Cập nhật Thời tiết qua API"
+                android:text="Cập nhật thời tiết"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginTop="24dp"
