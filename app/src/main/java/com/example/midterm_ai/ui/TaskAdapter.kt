@@ -39,7 +39,12 @@ class TaskAdapter(
         private val btnDelete: ImageButton = itemView.findViewById(R.id.btn_delete_task)
 
         fun bind(task: Task) {
+            // Đặt lại thuộc tính mặc định để không bị lỗi khi tái sử dụng view
+            itemView.alpha = 1f
+            itemView.translationX = 0f
+
             tvTitle.text = task.title
+            chkDone.setOnCheckedChangeListener(null) // Xóa listener cũ
             chkDone.isChecked = task.isDone
 
             if (task.isDone) {
@@ -49,11 +54,37 @@ class TaskAdapter(
             }
 
             chkDone.setOnClickListener {
-                onToggleDone(task)
+                if (chkDone.isChecked) {
+                    // Khi người dùng tick vào (đã làm) -> Gạch ngang chữ
+                    tvTitle.paintFlags = tvTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    
+                    // Tạo hiệu ứng trượt sang phải và mờ dần
+                    itemView.animate()
+                        .alpha(0f)
+                        .translationX(itemView.width.toFloat())
+                        .setDuration(400)
+                        .withEndAction {
+                            // Sau khi hiệu ứng kết thúc thì xóa task đi
+                            onDeleteTask(task)
+                        }
+                        .start()
+                } else {
+                    // Bỏ tick
+                    tvTitle.paintFlags = tvTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                    onToggleDone(task)
+                }
             }
 
             btnDelete.setOnClickListener {
-                onDeleteTask(task)
+                // Hiệu ứng khi bấm nút xóa
+                itemView.animate()
+                    .alpha(0f)
+                    .translationX(-itemView.width.toFloat())
+                    .setDuration(300)
+                    .withEndAction {
+                        onDeleteTask(task)
+                    }
+                    .start()
             }
         }
     }
