@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.view.inputmethod.InputMethodManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -167,6 +169,7 @@ class MainActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     taskRepository.addTask(title)
                     editTaskTitle.setText("")
+                    hideKeyboard(editTaskTitle)
                     loadTasks()
                 }
             } else {
@@ -275,6 +278,7 @@ class MainActivity : AppCompatActivity() {
                     editEventTitle.setText("")
                     editEventDate.setText("")
                     editEventTime.setText("")
+                    hideKeyboard(editEventTime)
                     loadEvents()
                 }
             } else {
@@ -289,5 +293,10 @@ class MainActivity : AppCompatActivity() {
             eventAdapter.submitList(events)
             CalendarWidgetProvider.updateCalendarWidget(this@MainActivity)
         }
+    }
+
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
