@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var taskRepository: TaskRepository
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var editTaskTitle: EditText
-    private lateinit var btnAddTask: Button
+    private lateinit var btnAddTask: TextView
     private lateinit var listTasks: RecyclerView
 
     // Music Components
