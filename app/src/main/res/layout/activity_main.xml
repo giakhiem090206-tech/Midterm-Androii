@@ -443,7 +443,9 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_clock_card"
                             android:backgroundTint="#FFFFFF"
-                            android:hint="Date (e.g., Oct 26)"
+                            android:hint="@string/event_date_hint"
+                            android:focusable="false"
+                            android:clickable="true"
                             android:paddingHorizontal="16dp"
                             android:textSize="14sp" />
 
@@ -454,7 +456,9 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_clock_card"
                             android:backgroundTint="#FFFFFF"
-                            android:hint="Time (09:00 AM)"
+                            android:hint="@string/event_time_hint"
+                            android:focusable="false"
+                            android:clickable="true"
                             android:layout_marginStart="8dp"
                             android:paddingHorizontal="16dp"
                             android:textSize="14sp" />

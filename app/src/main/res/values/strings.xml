@@ -3,4 +3,6 @@
     <string name="reminders_title">Reminder</string>
     <string name="add_reminder_hint">Thêm nhắc nhở</string>
     <string name="btn_add">Thêm</string>
+    <string name="event_date_hint">Ngày (27 Th10)</string>
+    <string name="event_time_hint">Giờ (08:30)</string>
 </resources>
