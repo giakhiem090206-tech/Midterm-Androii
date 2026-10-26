@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Midterm_AI</string>
+    <string name="app_name">Midterm</string>
     <string name="reminders_title">Reminder</string>
     <string name="add_reminder_hint">Thêm nhắc nhở</string>
     <string name="btn_add">Thêm</string>
