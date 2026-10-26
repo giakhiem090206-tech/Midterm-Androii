@@ -4,10 +4,29 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+
+    <!-- Outer White Squircle -->
     <path
-        android:fillColor="#0A84FF"
-        android:pathData="M78.75,22.5h-4.5v-9h-9v9h-22.5v-9h-9v9h-4.5c-4.97,0 -9,4.03 -9,9v54c0,4.97 4.03,9 9,9h54c4.97,0 9,-4.03 9,-9v-54C87.75,26.53 83.72,22.5 78.75,22.5zM78.75,85.5h-54v-40.5h54V85.5z" />
+        android:fillColor="#F2F3F8"
+        android:pathData="M42,20 h24 c12.15,0 22,9.85 22,22 v24 c0,12.15 -9.85,22 -22,22 h-24 c-12.15,0 -22,-9.85 -22,-22 v-24 c0,-12.15 9.85,-22 22,-22 z" />
+
+    <!-- Top Left - Purple -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M38.25,58.5h9v9h-9zM54,58.5h9v9h-9zM69.75,58.5h9v9h-9zM38.25,72h9v9h-9zM54,72h9v9h-9zM69.75,72h9v9h-9z" />
+        android:fillColor="#AB60FF"
+        android:pathData="M36,28 h8 c4.42,0 8,3.58 8,8 v14 a2,2 0 0 1 -2,2 h-14 c-4.42,0 -8,-3.58 -8,-8 v-8 c0,-4.42 3.58,-8 8,-8 z" />
+
+    <!-- Top Right - Blue -->
+    <path
+        android:fillColor="#1585FF"
+        android:pathData="M64,28 h8 c4.42,0 8,3.58 8,8 v8 c0,4.42 -3.58,8 -8,8 h-14 a2,2 0 0 1 -2,-2 v-14 c0,-4.42 3.58,-8 8,-8 z" />
+
+    <!-- Bottom Left - Cyan -->
+    <path
+        android:fillColor="#00D2D3"
+        android:pathData="M36,56 h14 a2,2 0 0 1 2,2 v14 c0,4.42 -3.58,8 -8,8 h-8 c-4.42,0 -8,-3.58 -8,-8 v-8 c0,-4.42 3.58,-8 8,-8 z" />
+
+    <!-- Bottom Right - Deep Purple -->
+    <path
+        android:fillColor="#6C38FF"
+        android:pathData="M58,56 h14 c4.42,0 8,3.58 8,8 v8 c0,4.42 -3.58,8 -8,8 h-8 c-4.42,0 -8,-3.58 -8,-8 v-14 a2,2 0 0 1 2,-2 z" />
 </vector>
